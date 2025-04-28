@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krishna Collections</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -12,6 +12,7 @@
         /* Custom CSS for animations and parallax */
         #heroSection {
             height: 100vh;
+            min-height: 500px;
             position: relative;
             overflow: hidden;
         }
@@ -25,6 +26,7 @@
             opacity: 0;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             transition: opacity 1.5s ease-in-out;
         }
 
@@ -39,13 +41,15 @@
             transform: translate(-50%, -50%);
             text-align: center;
             background-color: rgba(0, 0, 0, 0.6);
-            padding: 2.5rem 3rem;
+            padding: 1.5rem 2rem;
             border-radius: 0.75rem;
             animation: fadeInHero 1s ease-in-out 0.5s forwards;
             opacity: 0;
             z-index: 10;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255,255,255,0.1);
+            width: 90%;
+            max-width: 1200px;
         }
 
         @keyframes fadeInHero {
@@ -137,7 +141,7 @@
         
         .community-section {
             position: relative;
-            height: 500px;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -177,141 +181,152 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
+        /* Responsive adjustments */
+        @media (min-width: 640px) {
+            #heroContent {
+                padding: 2rem 2.5rem;
+            }
+            .community-section {
+                height: 450px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #heroContent {
+                padding: 2.5rem 3rem;
+            }
+            .community-section {
+                height: 500px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #heroSection {
+                min-height: 700px;
+            }
+            .community-section {
+                height: 550px;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-gray-800">Krishna Collections</div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium transition">Home</a>
-                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium transition">Collections</a>
-                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium transition">About</a>
-                <a href="#" class="text-gray-700 hover:text-gray-900 font-medium transition">Contact</a>
-            </div>
-            <div class="flex items-center space-x-4">
-                <button class="p-2 text-gray-700 hover:text-gray-900 transition">
-                    <i class="fas fa-search"></i>
-                </button>
-                <button class="p-2 text-gray-700 hover:text-gray-900 transition">
-                    <i class="fas fa-shopping-bag"></i>
-                </button>
-                <button class="md:hidden p-2 text-gray-700 hover:text-gray-900 transition">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-center items-center">
+            <div class="text-xl sm:text-2xl font-bold text-gray-800">Krishna Collections</div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="heroSection">
+    <section id="heroSection" class="relative h-screen min-h-[500px] md:min-h-[600px] lg:min-h-screen">
         <div id="heroImage1" class="hero-image-container"></div>
         <div id="heroImage2" class="hero-image-container"></div>
         <div id="heroImage3" class="hero-image-container"></div>
 
         <div id="heroContent">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 font-serif">Krishna Collections</h1>
-            <p class="text-white text-lg md:text-xl mb-8 max-w-2xl mx-auto">Elevate your style with our exquisite collection of timeless fashion pieces crafted for the modern individual.</p>
-            <button id="heroButton" class="px-8 py-3 bg-white text-gray-900 rounded-full font-bold hover:bg-gray-100 transition duration-300 shadow-lg">
-                Explore Collections <i class="fas fa-arrow-right ml-2"></i>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 font-serif">Krishna Collections</h1>
+            <p class="text-white text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8">Elevate your style with our exquisite collection of timeless fashion pieces crafted for the modern individual.</p>
+            <button id="heroButton" class="px-6 sm:px-8 py-2 sm:py-3 bg-white text-gray-900 rounded-full font-bold hover:bg-gray-100 transition duration-300 shadow-lg text-sm sm:text-base">
+                Visit Now <i class="fas fa-arrow-right ml-1 sm:ml-2"></i>
             </button>
         </div>
         
-        <div class="absolute bottom-8 left-0 right-0 flex justify-center z-10">
+        <div class="absolute bottom-4 sm:bottom-8 left-0 right-0 flex justify-center z-10">
             <div class="flex space-x-2">
-                <button class="w-3 h-3 rounded-full bg-white opacity-50 hero-dot" data-index="0"></button>
-                <button class="w-3 h-3 rounded-full bg-white opacity-50 hero-dot" data-index="1"></button>
-                <button class="w-3 h-3 rounded-full bg-white opacity-50 hero-dot" data-index="2"></button>
+                <button class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white opacity-50 hero-dot" data-index="0"></button>
+                <button class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white opacity-50 hero-dot" data-index="1"></button>
+                <button class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white opacity-50 hero-dot" data-index="2"></button>
             </div>
         </div>
     </section>
 
     <!-- Timeless Elegance Section -->
-    <section class="max-w-7xl mx-auto py-20 px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold mb-4 slide-up font-serif">Timeless Elegance</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto slide-up" style="--delay: 0.2s;">Discover our curated collection of fashion that transcends trends and seasons.</p>
+    <section class="max-w-7xl mx-auto py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+        <div class="text-center mb-10 sm:mb-14 md:mb-16">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 slide-up font-serif">Timeless Elegance</h2>
+            <p class="text-gray-600 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto slide-up" style="--delay: 0.2s;">Discover our curated collection of fashion that transcends trends and seasons.</p>
         </div>
-        <div id="timelessDesignImages" class="grid md:grid-cols-2 gap-10">
+        <div id="timelessDesignImages" class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
             <!-- Images will be inserted here by JavaScript -->
         </div>
     </section>
 
     <!-- Categories Section -->
-    <section class="bg-gray-50 py-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 slide-up font-serif">Our Collections</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto slide-up" style="--delay: 0.2s;">Explore our handpicked categories designed for every occasion.</p>
+    <section class="bg-gray-50 py-12 sm:py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-14 md:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 slide-up font-serif">Our Collections</h2>
+                <p class="text-gray-600 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto slide-up" style="--delay: 0.2s;">Explore our handpicked categories designed for every occasion.</p>
             </div>
-            <div id="categoriesGrid" class="grid md:grid-cols-3 gap-8">
+            <div id="categoriesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 <!-- Categories will be inserted here by JavaScript -->
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="bg-white py-20">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-4 slide-up font-serif">Client Testimonials</h2>
-            <p class="text-gray-600 mb-16 max-w-2xl mx-auto slide-up" style="--delay: 0.2s;">Hear what our valued customers have to say about their experience.</p>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="testimonial-card p-8 fade-in" style="--delay: 0.2s;">
-                    <div class="star-rating">
+    <section class="bg-white py-12 sm:py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 slide-up font-serif">Client Testimonials</h2>
+            <p class="text-gray-600 mb-10 sm:mb-14 md:mb-16 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto slide-up" style="--delay: 0.2s;">Hear what our valued customers have to say about their experience.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="testimonial-card p-6 sm:p-8 fade-in" style="--delay: 0.2s;">
+                    <div class="star-rating text-sm sm:text-base">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-700 mb-6">"Absolutely love the collection! The quality is exceptional and the designs are so elegant. I always get compliments when I wear Krishna Collections."</p>
+                    <p class="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">"Absolutely love the collection! The quality is exceptional and the designs are so elegant. I always get compliments when I wear Krishna Collections."</p>
                     <div class="flex items-center justify-center">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 mr-3 sm:mr-4 overflow-hidden">
                             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h3 class="font-bold">Priya Sharma</h3>
-                            <p class="text-sm text-gray-500">Fashion Blogger</p>
+                            <h3 class="font-bold text-sm sm:text-base">Priya Sharma</h3>
+                            <p class="text-xs sm:text-sm text-gray-500">Fashion Blogger</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card p-8 fade-in" style="--delay: 0.4s;">
-                    <div class="star-rating">
+                <div class="testimonial-card p-6 sm:p-8 fade-in" style="--delay: 0.4s;">
+                    <div class="star-rating text-sm sm:text-base">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-700 mb-6">"Best shopping experience I've had online. The customer service was excellent and the pieces I ordered fit perfectly. Will definitely shop again!"</p>
+                    <p class="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">"Best shopping experience I've had online. The customer service was excellent and the pieces I ordered fit perfectly. Will definitely shop again!"</p>
                     <div class="flex items-center justify-center">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 mr-3 sm:mr-4 overflow-hidden">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Aman" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h3 class="font-bold">Aman Patel</h3>
-                            <p class="text-sm text-gray-500">Entrepreneur</p>
+                            <h3 class="font-bold text-sm sm:text-base">Aman Patel</h3>
+                            <p class="text-xs sm:text-sm text-gray-500">Entrepreneur</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card p-8 fade-in" style="--delay: 0.6s;">
-                    <div class="star-rating">
+                <div class="testimonial-card p-6 sm:p-8 fade-in" style="--delay: 0.6s;">
+                    <div class="star-rating text-sm sm:text-base">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p class="text-gray-700 mb-6">"The fabric quality is top-notch, exactly as described. I appreciate the attention to detail in every piece. Already planning my next order!"</p>
+                    <p class="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">"The fabric quality is top-notch, exactly as described. I appreciate the attention to detail in every piece. Already planning my next order!"</p>
                     <div class="flex items-center justify-center">
-                        <div class="w-12 h-12 rounded-full bg-gray-200 mr-4 overflow-hidden">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 mr-3 sm:mr-4 overflow-hidden">
                             <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sara" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h3 class="font-bold">Sara Khan</h3>
-                            <p class="text-sm text-gray-500">Interior Designer</p>
+                            <h3 class="font-bold text-sm sm:text-base">Sara Khan</h3>
+                            <p class="text-xs sm:text-sm text-gray-500">Interior Designer</p>
                         </div>
                     </div>
                 </div>
@@ -322,59 +337,58 @@
     <!-- Community Section -->
     <section id="communityImage" class="community-section">
         <div class="community-overlay"></div>
-        <div class="text-center relative z-10 px-6 max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 slide-up font-serif">Join Our Fashion Community</h2>
-            <p class="text-white text-lg mb-8 slide-up" style="--delay: 0.2s;">Be the first to know about new collections, exclusive offers, and fashion tips from our experts.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center slide-up" style="--delay: 0.4s;">
-                <input type="email" placeholder="Your email address" class="px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-white/50 w-full sm:w-auto">
-                <button class="px-8 py-3 bg-white text-gray-900 rounded-full font-bold hover:bg-gray-100 transition duration-300 shadow-lg">
-                    Subscribe <i class="fas fa-paper-plane ml-2"></i>
+        <div class="text-center relative z-10 px-4 sm:px-6 max-w-md sm:max-w-2xl md:max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6 slide-up font-serif">Join Our Fashion Community</h2>
+            <p class="text-white text-sm sm:text-base md:text-lg mb-6 sm:mb-8 slide-up" style="--delay: 0.2s;">Be the first to know about new collections, exclusive offers, and fashion tips from our experts.</p>
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center slide-up" style="--delay: 0.4s;">
+                <button class="px-6 sm:px-8 py-2 sm:py-3 bg-white text-gray-900 rounded-full font-bold hover:bg-gray-100 transition duration-300 shadow-lg text-sm sm:text-base">
+                    Join WhatsApp Group <i class="fas fa-paper-plane ml-1 sm:ml-2"></i>
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 fade-in">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer class="bg-gray-900 text-white py-8 md:py-12 fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
             <div>
-                <h3 class="text-2xl font-bold mb-4">Krishna Collections</h3>
-                <p class="text-gray-400">Elevating your style with timeless fashion pieces since 2010.</p>
-                <div class="flex space-x-4 mt-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-pinterest"></i></a>
+                <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Krishna Collections</h3>
+                <p class="text-gray-400 text-sm sm:text-base">Elevating your style with timeless fashion pieces since 2010.</p>
+                <div class="flex space-x-3 sm:space-x-4 mt-4 sm:mt-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition text-sm sm:text-base"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-sm sm:text-base"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-sm sm:text-base"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition text-sm sm:text-base"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
             <div>
-                <h4 class="font-bold text-lg mb-4">Shop</h4>
+                <h4 class="font-bold text-lg mb-3 sm:mb-4">Shop</h4>
                 <ul class="space-y-2 footer-links">
-                    <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Best Sellers</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Seasonal Collections</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Sale</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm sm:text-base">New Arrivals</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm sm:text-base">Best Sellers</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm sm:text-base">Seasonal Collections</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm sm:text-base">Sale</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-lg mb-4">Information</h4>
+                <h4 class="font-bold text-lg mb-3 sm:mb-4">Information</h4>
                 <ul class="space-y-2 footer-links">
-                    <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Sustainability</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Shipping & Returns</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm sm:text-base">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm sm:text-base">Sustainability</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm sm:text-base">Shipping & Returns</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white text-sm sm:text-base">Size Guide</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-lg mb-4">Contact</h4>
+                <h4 class="font-bold text-lg mb-3 sm:mb-4">Contact</h4>
                 <ul class="space-y-2">
-                    <li class="text-gray-400"><i class="fas fa-map-marker-alt mr-2"></i> 123 Fashion St, Mumbai</li>
-                    <li class="text-gray-400"><i class="fas fa-phone mr-2"></i> +91 98765 43210</li>
-                    <li class="text-gray-400"><i class="fas fa-envelope mr-2"></i> hello@krishnacollections.com</li>
+                    <li class="text-gray-400 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i> 123 Fashion St, Mumbai</li>
+                    <li class="text-gray-400 text-sm sm:text-base"><i class="fas fa-phone mr-2"></i> +91 98765 43210</li>
+                    <li class="text-gray-400 text-sm sm:text-base"><i class="fas fa-envelope mr-2"></i> hello@krishnacollections.com</li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 pt-8 mt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-gray-800 text-center text-gray-500 text-xs sm:text-sm">
             <p>© 2025 Krishna Collections. All rights reserved.</p>
         </div>
     </footer>
@@ -421,15 +435,41 @@
 
         gsap.registerPlugin(ScrollTrigger);
 
-        // Set initial background images and opacity for all banner images
-        heroImageContainers.forEach((container, index) => {
-            gsap.set(container, { 
-                backgroundImage: `url(${data.heroImages[index]})`, 
-                opacity: index === 0 ? 1 : 0 
+        // Set initial background images with responsive adjustments
+        function setupHeroImages() {
+            heroImageContainers.forEach((container, index) => {
+                const imageUrl = data.heroImages[index];
+                container.style.backgroundImage = `url(${imageUrl})`;
+                
+                if (window.innerWidth < 768) {
+                    container.style.backgroundPosition = 'center center';
+                    container.style.backgroundSize = 'cover';
+                } else {
+                    container.style.backgroundPosition = 'center';
+                    container.style.backgroundSize = 'cover';
+                }
+                
+                gsap.set(container, { 
+                    opacity: index === 0 ? 1 : 0 
+                });
             });
-        });
+        }
 
-        // Hero image slider functionality
+        // Initialize hero slider
+        function initHeroSlider() {
+            setupHeroImages();
+            heroDots[0].classList.remove('opacity-50');
+            heroDots[0].classList.add('opacity-100');
+            startHeroSlider();
+        }
+
+        function startHeroSlider() {
+            heroInterval = setInterval(() => {
+                const nextIndex = (currentHeroIndex + 1) % heroImageContainers.length;
+                changeHeroImage(nextIndex);
+            }, 5000);
+        }
+
         function changeHeroImage(index) {
             currentHeroIndex = index;
             
@@ -453,18 +493,6 @@
                 }
             });
         }
-
-        function startHeroSlider() {
-            heroInterval = setInterval(() => {
-                const nextIndex = (currentHeroIndex + 1) % heroImageContainers.length;
-                changeHeroImage(nextIndex);
-            }, 5000);
-        }
-
-        // Initialize hero slider
-        heroDots[0].classList.remove('opacity-50');
-        heroDots[0].classList.add('opacity-100');
-        startHeroSlider();
 
         // Dot click handlers
         heroDots.forEach(dot => {
@@ -501,6 +529,9 @@
             }
         });
 
+        // Handle window resize
+        window.addEventListener('resize', setupHeroImages);
+
         // --- Intersection Observer for other animations ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -521,19 +552,19 @@
         const timelessDesignImagesContainer = document.querySelector('#timelessDesignImages');
         const timelessHTML = data.timelessDesign.map(url => `
             <div class="overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition duration-300 zoom-in">
-                <img src="${url}" class="w-full h-full object-cover hover:scale-105 transition duration-700">
+                <img src="${url}" class="w-full h-full object-cover hover:scale-105 transition duration-700" loading="lazy">
             </div>
         `).join('');
         timelessDesignImagesContainer.innerHTML = timelessHTML;
 
         const categoriesGridContainer = document.querySelector('#categoriesGrid');
         const categoriesHTML = data.categories.map(category => `
-            <div class="category-card zoom-in h-96 overflow-hidden">
-                <img src="${category.image}" class="w-full h-full object-cover transition duration-700">
+            <div class="category-card zoom-in h-80 sm:h-96 overflow-hidden">
+                <img src="${category.image}" class="w-full h-full object-cover transition duration-700" loading="lazy">
                 <div class="category-overlay">
-                    <h3 class="text-xl font-bold text-white mb-2">${category.title}</h3>
-                    <p class="text-gray-200">${category.description}</p>
-                    <button class="mt-4 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">${category.title}</h3>
+                    <p class="text-gray-200 text-sm sm:text-base">${category.description}</p>
+                    <button class="mt-3 sm:mt-4 px-3 sm:px-4 py-1 sm:py-2 bg-white text-gray-900 rounded-full text-xs sm:text-sm font-medium hover:bg-gray-100 transition">
                         Shop Now
                     </button>
                 </div>
@@ -556,6 +587,11 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initHeroSlider();
         });
     </script>
 </body>
