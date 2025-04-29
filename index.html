@@ -216,7 +216,7 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-center items-center">
-            <div class="text-xl sm:text-2xl font-bold text-gray-800">Krishna Collections</div>
+            <div class="text-xl sm:text-2xl font-bold text-gray-800">Krishna Collection</div>
         </div>
     </nav>
 
@@ -564,9 +564,6 @@
                 <div class="category-overlay">
                     <h3 class="text-lg sm:text-xl font-bold text-white mb-2">${category.title}</h3>
                     <p class="text-gray-200 text-sm sm:text-base">${category.description}</p>
-                    <button class="mt-3 sm:mt-4 px-3 sm:px-4 py-1 sm:py-2 bg-white text-gray-900 rounded-full text-xs sm:text-sm font-medium hover:bg-gray-100 transition">
-                        Shop Now
-                    </button>
                 </div>
             </div>
         `).join('');
@@ -592,6 +589,12 @@
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             initHeroSlider();
+        });
+
+        document.getElementById("heroButton").addEventListener("click", function() {
+            // Replace the URL with your actual shop location
+            window.open("https://www.google.com/maps/dir/?api=1&destination=Krishna+Collections+Bajrang+Chowk,+Dipka+-+Katghora+Rd,+Dipka,+Gevra,+Chhattisgarh+495452", "_blank");
+            
         });
     </script>
 </body>
